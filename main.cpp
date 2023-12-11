@@ -51,17 +51,22 @@ int main()
 
 ////=========Show All Data Parent=====================
 //=======Show Data Toko==============
-    showToko(LT);
+//    showToko(LT);
 ////=======Show Data Barang===========
 //    showBarang(LB);
 //
 ////=========Delete Parent Data=====================
 //=========Delete First List Toko======================
-    deleteLastToko(LT,Q);
-    showToko(LT);
+//    deleteLastToko(LT,Q);
+//    showToko(LT);
 //=========Delete Last List Barang======================
-    deleteFirstBarang(LB,P);
-    showBarang(LB);
-    showToko(LT);
+//    deleteFirstBarang(LB,P,LT);
+//    showBarang(LB);
+//    showToko(LT);
+
+//=========Show Barang yang disewa oleh suatu toko=======
+//    showBarangToko(LT,"Tel-U Electronic");
+//=========Show Toko yang menyewakan suatu barang========
+    showAllSewa(LT,"Playstation 1");
     return 0;
 }

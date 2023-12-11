@@ -49,5 +49,7 @@ void showToko(listToko LT);
 void showBarang(listBarang LB);
 void insertLastSewa(listToko &LT, adr_sewa S, adr_toko T);
 void deleteLastToko(listToko &LT, adr_toko &T);
-void deleteFirstBarang(listBarang &LB, adr_barang &B);
+void deleteFirstBarang(listBarang &LB, adr_barang &B,listToko &LT);
+void showBarangToko(listToko &LB, infotype toko);
+void showAllSewa(listToko LT,infotype barang);
 #endif // TOKOSEWA_H_INCLUDED

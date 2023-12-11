@@ -68,6 +68,7 @@ void showToko(listToko LT){
             while(S != NULL){
                 cout << i << ". " << info(info(S)) << endl;
                 S = next(S);
+                i++;
             }
             cout << endl;
         }
@@ -115,7 +116,7 @@ void deleteLastToko(listToko &LT, adr_toko &T){
     }
 }
 
-void deleteFirstBarang(listBarang &LB, adr_barang &B){
+void deleteFirstBarang(listBarang &LB, adr_barang &B, listToko &LT){
     if(first(LB) == NULL){
         cout << "=======LIST KOSONG=======\n";
     }else if (next(first(LB)) == NULL){
@@ -127,4 +128,71 @@ void deleteFirstBarang(listBarang &LB, adr_barang &B){
         next(B) =NULL;
     }
 
+    adr_toko T = first(LT);
+    while(T != NULL){
+        adr_sewa S = firstSewa(T);
+        adr_sewa Q = NULL;
+        while(S != NULL){
+            if(info(S) == B){
+                if(firstSewa(T) == S){
+                    firstSewa(T) = next(S);
+                    next(S) = NULL;
+                    S = firstSewa(T);
+                }
+                else if (next(S) == NULL){
+                    next(Q) = NULL;
+                    S = next(S);
+                }else{
+                    next(Q) = next(S);
+                    next(S) = NULL;
+                    S = next(Q);
+                }
+                Q = S;
+            }else{
+                Q = S;
+                S = next(S);
+            }
+
+        }
+        T = next(T);
+    }
+}
+
+void showBarangToko(listToko &LT, infotype toko){
+    adr_toko T = first(LT);
+    bool found = false;
+    while(T != NULL && !found){
+        if(info(T) == toko){
+            found = true;
+        }else{
+            T = next(T);
+        }
+    }
+    adr_sewa S = firstSewa(T);
+    cout << "List Barang Yang Disewakan Toko " << toko << "\n" ;
+    int i = 1;
+    while(S != NULL){
+        cout << i << ". " << info(info(S)) << endl;
+        S = next(S);
+        i++;
+    }
+}
+
+void showAllSewa(listToko LT,infotype barang){
+    adr_toko T = first(LT);
+    while(T != NULL){
+        bool found = false;
+        adr_sewa S = firstSewa(T);
+        while(S != NULL && !found){
+            if(info(info(S)) == barang){
+                found = true;
+            }else{
+                S = next(S);
+            }
+        }
+        if(found){
+            cout << "Nama Toko:" << info(T) << endl;
+        }
+        T = next(T);
+    }
 }
