@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1702280445 source:c:\users\user tuf\documents\ds-46-03-2324-1\struktur data\tubes\mll\toko & barang\main.cpp
+	"tokoSewa.h"
+
+1702278696 c:\users\user tuf\documents\ds-46-03-2324-1\struktur data\tubes\mll\toko & barang\tokosewa.h
+	<iostream>
+
+1702280292 source:c:\users\user tuf\documents\ds-46-03-2324-1\struktur data\tubes\mll\toko & barang\tokosewa.cpp
+	"tokoSewa.h"
+
