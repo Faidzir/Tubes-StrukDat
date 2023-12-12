@@ -65,7 +65,7 @@ void insertFirstToko(listToko &LT, adr_toko Q){
 
 void showToko(listToko LT){
     adr_toko Q = first(LT);
-    cout << "=========LIST TOKO==========\n";
+    cout << "=========LIST TOKO & BARANG==========\n";
     while(Q != NULL){ // add show child
         cout  << "Nama: " << info(Q).nama << endl;
         cout  <<  "ID: "<< info(Q).id << endl;
@@ -109,99 +109,234 @@ void insertLastSewa(listToko &LT, adr_sewa S, adr_toko T){
     }
 }
 
-//void deleteLastToko(listToko &LT, adr_toko &T){
-//    if(first(LT) == NULL){
-//        cout << "=======LIST KOSONG=======\n";
-//    }else if (next(first(LT)) == NULL){
-//        T = first(LT);
-//        first(LT) = NULL;
-//    }else{
-//        adr_toko Q = first(LT);
-//        while(next(next(Q))!= NULL){
-//            Q = next(Q);
-//        };
-//        T = next(Q);
-//        next(Q) = NULL;
-//    }
-//}
-//
-//void deleteFirstBarang(listBarang &LB, adr_barang &B, listToko &LT){
-//    if(first(LB) == NULL){
-//        cout << "=======LIST KOSONG=======\n";
-//    }else if (next(first(LB)) == NULL){
-//        B = first(LB);
-//        first(LB) = NULL;
-//    }else{
-//        B = first(LB);
-//        first(LB) = next(B);
-//        next(B) =NULL;
-//    }
-//
-//    adr_toko T = first(LT);
-//    while(T != NULL){
-//        adr_sewa S = firstSewa(T);
-//        adr_sewa Q = NULL;
-//        while(S != NULL){
-//            if(info(S) == B){
-//                if(firstSewa(T) == S){
-//                    firstSewa(T) = next(S);
-//                    next(S) = NULL;
-//                    S = firstSewa(T);
-//                }
-//                else if (next(S) == NULL){
-//                    next(Q) = NULL;
-//                    S = next(S);
-//                }else{
-//                    next(Q) = next(S);
-//                    next(S) = NULL;
-//                    S = next(Q);
-//                }
-//                Q = S;
-//            }else{
-//                Q = S;
-//                S = next(S);
-//            }
-//
-//        }
-//        T = next(T);
-//    }
-//}
-//
-//void showBarangToko(listToko &LT, infotype toko){
-//    adr_toko T = first(LT);
-//    bool found = false;
-//    while(T != NULL && !found){
-//        if(info(T) == toko){
-//            found = true;
-//        }else{
-//            T = next(T);
-//        }
-//    }
-//    adr_sewa S = firstSewa(T);
-//    cout << "List Barang Yang Disewakan Toko " << toko << "\n" ;
-//    int i = 1;
-//    while(S != NULL){
-//        cout << i << ". " << info(info(S)) << endl;
-//        S = next(S);
-//        i++;
-//    }
-//}
+void deleteLastToko(listToko &LT, adr_toko &T){
+    if(first(LT) == NULL){
+        cout << "=======LIST KOSONG=======\n";
+    }else if (next(first(LT)) == NULL){
+        T = first(LT);
+        first(LT) = NULL;
+    }else{
+        adr_toko Q = first(LT);
+        while(next(next(Q))!= NULL){
+            Q = next(Q);
+        };
+        T = next(Q);
+        next(Q) = NULL;
+    }
+}
 
-//void showAllSewa(listToko LT,infotype barang){
-//    adr_toko T = first(LT);
-//    while(T != NULL){
-//        bool found = false;
-//        adr_sewa S = firstSewa(T);
-//        while(S != NULL && !found){
-//            if(info(info(S)) == barang){
-//                found = true;
-//            }else{
-//                S = next(S);
-//            }
-//        }
-//        if(found){
-//            cout << "Nama Toko:" << info(T) << endl;
-//        }
-//        T = next(T);
-//    }
-//}
+void deleteFirstBarang(listBarang &LB, adr_barang &B, listToko &LT){
+    if(first(LB) == NULL){
+        cout << "=======LIST KOSONG=======\n";
+    }else if (next(first(LB)) == NULL){
+        B = first(LB);
+        first(LB) = NULL;
+    }else{
+        B = first(LB);
+        first(LB) = next(B);
+        next(B) =NULL;
+    }
+
+    adr_toko T = first(LT);
+    while(T != NULL){
+        adr_sewa S = firstSewa(T);
+        adr_sewa Q = NULL;
+        while(S != NULL){
+            if(info(S) == B){
+                if(firstSewa(T) == S){
+                    firstSewa(T) = next(S);
+                    next(S) = NULL;
+                    S = firstSewa(T);
+                }
+                else if (next(S) == NULL){
+                    next(Q) = NULL;
+                    S = next(S);
+                }else{
+                    next(Q) = next(S);
+                    next(S) = NULL;
+                    S = next(Q);
+                }
+                Q = S;
+            }else{
+                Q = S;
+                S = next(S);
+            }
+
+        }
+        T = next(T);
+    }
+}
+
+void showBarangToko(listToko &LT, adr_toko T){
+    adr_sewa S = firstSewa(T);
+    int i = 1;
+    cout << "=====Barang yang Disewakan======\n";
+    while(S != NULL){
+        cout << i << ". " << info(info(S)).nama << endl;
+        S = next(S);
+        i++;
+    }
+    cout << endl;
+}
+
+void showAllSewa(listToko LT,infoBarang barang){
+    adr_toko T = first(LT);
+    while(T != NULL){
+        bool found = false;
+        adr_sewa S = firstSewa(T);
+        while(S != NULL && !found){
+            if(info(info(S)).id == barang.id){
+                found = true;
+            }else{
+                S = next(S);
+            }
+        }
+        if(found){
+            cout << "Nama Toko:" << info(T).nama << endl;
+        }
+        T = next(T);
+    }
+}
+
+adr_toko findToko(listToko LT, string id){
+    adr_toko T = first(LT);
+    while(T != NULL){
+        if(info(T).id == id){
+            return T;
+        }
+        T = next(T);
+    }
+    return NULL;
+}
+
+adr_barang findBarang(listBarang LB, string id){
+    adr_barang B = first(LB);
+    while(B != NULL){
+        if(info(B).id == id){
+            return B;
+        }
+        B = next(B);
+    }
+    return NULL;
+}
+
+bool found(adr_toko T, adr_barang B){
+    adr_sewa S = firstSewa(T);
+    while(S != NULL){
+        if(info(S) == B){
+            return true;
+        }
+        S = next(S);
+    }
+    return false;
+}
+
+void maxMin(listToko LT){
+    int max = -1;
+    int min = 9999999;
+    adr_toko tMax = NULL;
+    adr_toko tMin = NULL;
+    adr_toko T = first(LT);
+    while(T != NULL){
+        int count = 0;
+        adr_sewa S = firstSewa(T);
+        while(S != NULL){
+            count++;
+            S = next(S);
+        }
+        if(count < min){
+            min = count;
+            tMin = T;
+        }
+        if(count > max){
+            max = count;
+            tMax = T;
+        }
+        T = next(T);
+    }
+    cout << "Toko Terbanyak yang menyewakan Barang: " << info(tMax).nama << endl;
+    cout << "Toko Tersedikit yang menyewakan Barang: " << info(tMin).nama << endl;
+    cout << "==========================\n";
+}
+
+void menu(int x, listToko &LT, listBarang &LB){
+    if(x == 1){
+        showToko(LT);
+    }else if(x == 2){
+        showBarang(LB);
+    }else if(x == 3){
+        infoToko toko;
+        cout << "Masukan ID Toko: ";
+        cin >> toko.id;
+        cout << "Masukan Nama Toko: ";
+        cin >> toko.nama;
+        cout << "Masukan Tahun Toko: ";
+        cin >> toko.tahun;
+        adr_toko T = createElmToko(toko);
+        insertFirstToko(LT,T);
+    }else if (x == 4){
+        infoBarang barang;
+        cout << "Masukan ID Barang: ";
+        cin >> barang.id;
+        cout << "Masukan Nama Barang: ";
+        cin >> barang.nama;
+        cout << "Masukan Jenis Barang: ";
+        cin >> barang.jenis;
+        adr_barang B = createElmBarang(barang);
+        insertLastBarang(LB,B);
+    }else if (x == 5){
+        string id;
+        cout << "=====Pilih Toko====\n";
+        showToko(LT);
+        cout << "Masukkan ID Toko: ";
+        cin >> id;
+        adr_toko T = findToko(LT,id);
+        if(T == NULL){
+            cout << "Maaf toko tidak ditemukan!\n";
+        }else{
+            cout << "=======Pilih Barang=======\n";
+            showBarang(LB);
+            cout << "Masukkan ID Barang: ";
+            cin >> id;
+            adr_barang B = findBarang(LB,id);
+            if(B == NULL){
+                cout << "Maaf barang tidak ditemukan!\n";
+            }else{
+                if(!found(T,B)){
+                    adr_sewa S = createElmSewa(B);
+                    insertLastSewa(LT,S,T);
+                }
+
+            }
+
+        }
+    }else if (x == 6){
+        string id;
+        cout << "======Pilih Toko========\n";
+        showToko(LT);
+        cout << "Masukan ID Toko: ";
+        cin >> id;
+        adr_toko T = findToko(LT,id);
+        showBarangToko(LT,T);
+    }else if (x == 7){
+        string id;
+        cout << "=======Pilih Barang========\n";
+        showBarang(LB);
+        cout << "Masukan ID Barang: ";
+        cin >> id;
+        adr_toko T = first(LT);
+        while(T != NULL){
+            adr_sewa S = firstSewa(T);
+            while(S != NULL){
+                if(info(info(S)).id == id){
+                    cout << info(T).nama << endl;
+                }
+                S = next(S);
+            }
+            T = next(T);
+        }
+        cout << endl;
+    }else if (x == 8){
+        maxMin(LT);
+    }
+}

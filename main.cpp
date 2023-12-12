@@ -26,7 +26,7 @@ int main()
     toko.tahun = 1500;
     Q = createElmToko(toko);
     insertFirstToko(LT,Q);
-    showToko(LT);
+
 
 
 //========Insert Data Barang/Second List==============
@@ -46,7 +46,7 @@ int main()
     barang.jenis = "Electronic";
     P = createElmBarang(barang);
     insertLastBarang(LB,P);
-    showBarang(LB);
+//    showBarang(LB);
 
 //Insert Barang to Toko
     adr_sewa S = createElmSewa(first(LB));
@@ -60,24 +60,27 @@ int main()
     insertLastSewa(LT,S,T);
 
 
-//=========Show All Data Parent=====================
-//=======Show Data Toko==============
-//    showToko(LT);
-//=======Show Data Barang===========
-//    showBarang(LB);
-//
-//=========Delete Parent Data=====================
-//=========Delete First List Toko======================
-//    deleteLastToko(LT,Q);
-//    showToko(LT);
-//=========Delete Last List Barang======================
-//    deleteFirstBarang(LB,P,LT);
-//    showBarang(LB);
-//    showToko(LT);
-//
+
 //=========Show Barang yang disewa oleh suatu toko=======
-//    showBarangToko(LT,"Tel-U Electronic");
+//    showBarangToko(LT,toko);
 //=========Show Toko yang menyewakan suatu barang========
-//    showAllSewa(LT,"Playstation 1");
+//    showAllSewa(LT,barang);
+
+//============Menu===========
+    int pil = 1;
+    cout << "========WELCOME==========\n";
+    while(pil != 0){
+        cout << "1. Lihat Toko & Barang yang Disewakan\n";
+        cout << "2. Lihat Semua Barang yang tersedia\n";
+        cout << "3. Tambahkan Toko\n";
+        cout << "4. Tambahkan Barang\n";
+        cout << "5. Tambahkan Barang yang disewakan Suatu Toko\n";
+        cout << "6. Tampilkan Barang yang tersedia pada suatu Toko\n";
+        cout << "7. Tampilkan Toko yang menyewakan suatu barang\n";
+        cout << "8. Tampilkan Toko yang paling banyak dan paling sedikit menyewakan barang\n";
+        cin >> pil;
+        menu(pil,LT,LB);
+    }
+
     return 0;
 }

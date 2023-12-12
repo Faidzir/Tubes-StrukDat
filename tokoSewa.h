@@ -60,6 +60,9 @@ void showBarang(listBarang LB);
 void insertLastSewa(listToko &LT, adr_sewa S, adr_toko T);
 void deleteLastToko(listToko &LT, adr_toko &T);
 void deleteFirstBarang(listBarang &LB, adr_barang &B,listToko &LT);
-void showBarangToko(listToko &LB, infoToko toko);
+void showBarangToko(listToko &LB, adr_toko T);
 void showAllSewa(listToko LT,infoBarang barang);
+void menu(int x, listToko &LT, listBarang &LB);
+void maxMin(listToko LT);
+bool found(adr_toko T, adr_barang B);
 #endif // TOKOSEWA_H_INCLUDED
