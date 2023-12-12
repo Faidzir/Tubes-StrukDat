@@ -2,7 +2,6 @@
 #define TOKOSEWA_H_INCLUDED
 #include <iostream>
 using namespace std;
-typedef string infotype;
 typedef struct elmSewa *adr_sewa;//pointer ElmSewa
 typedef struct elmToko *adr_toko;//pointer ElmToko
 typedef struct elmBarang *adr_barang;//pointer ElmBarang
@@ -15,9 +14,14 @@ struct elmSewa{
     adr_sewa next;//nextSewa
 };
 
+struct infoToko{
+    string nama;
+    string id;
+    int tahun;
+};
 
 struct elmToko{
-    infotype info;
+    infoToko info;
     adr_sewa firstSewa;
     adr_toko next;//nextToko
 };
@@ -25,8 +29,14 @@ struct elmToko{
 
 //Elemen Barang
 
+struct infoBarang{
+    string nama;
+    string id;
+    string jenis;
+};
+
 struct elmBarang{
-    infotype info;
+    infoBarang info;
     adr_barang next;//nextBarang
 };
 
@@ -40,8 +50,8 @@ struct listBarang{
 
 void createListToko(listToko &LT);
 void createListBarang(listBarang &LB);
-adr_barang createElmBarang(infotype namaBarang);
-adr_toko createElmToko(infotype namaToko);
+adr_barang createElmBarang(infoBarang barang);
+adr_toko createElmToko(infoToko toko);
 adr_sewa createElmSewa(adr_barang barang);
 void insertLastBarang(listBarang &LB, adr_barang P);
 void insertFirstToko(listToko &LT, adr_toko Q);
@@ -50,6 +60,6 @@ void showBarang(listBarang LB);
 void insertLastSewa(listToko &LT, adr_sewa S, adr_toko T);
 void deleteLastToko(listToko &LT, adr_toko &T);
 void deleteFirstBarang(listBarang &LB, adr_barang &B,listToko &LT);
-void showBarangToko(listToko &LB, infotype toko);
-void showAllSewa(listToko LT,infotype barang);
+void showBarangToko(listToko &LB, infoToko toko);
+void showAllSewa(listToko LT,infoBarang barang);
 #endif // TOKOSEWA_H_INCLUDED

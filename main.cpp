@@ -4,38 +4,49 @@ int main()
     listToko LT;
     listBarang LB;
 
-    //Initialization List
+//    Initialization List
     createListToko(LT);
     createListBarang(LB);
 
-//    //Insert List Barang
-//
-
-//
-//    //Insert List Toko
-//
-//
-//    //Insert Barang Sewa
-//    adr_sewa S = createElmSewa(first(LB));
-//    insertLastSewa(LT,S,first(LT));
-
-
 //=============Insert Data Parent==================
 //========Insert Data Toko/First List==============
-    adr_toko Q = createElmToko("TJ Mart");
+    infoToko toko;
+    toko.nama = "TJ Mart";
+    toko.id = "1";
+    toko.tahun = 2000;
+    adr_toko Q = createElmToko(toko);
     insertFirstToko(LT,Q);
-    Q = createElmToko("Tel-U Electronic");
+    toko.nama = "Yogya";
+    toko.id = "2";
+    toko.tahun = 1999;
+    Q = createElmToko(toko);
     insertFirstToko(LT,Q);
-    Q = createElmToko("Sukapura Rental");
+    toko.nama = "TransMart";
+    toko.id = "3";
+    toko.tahun = 1500;
+    Q = createElmToko(toko);
     insertFirstToko(LT,Q);
+    showToko(LT);
+
 
 //========Insert Data Barang/Second List==============
-    adr_barang P = createElmBarang("DVD Player");
+    infoBarang barang;
+    barang.nama = "DVD Player";
+    barang.id = "1";
+    barang.jenis = "Electronic";
+    adr_barang P = createElmBarang(barang);
     insertLastBarang(LB,P);
-    P = createElmBarang("Playstation 1");
+    barang.nama = "Ember";
+    barang.id = "2";
+    barang.jenis = "Rumah Tangga";
+    P = createElmBarang(barang);
     insertLastBarang(LB,P);
-    P = createElmBarang("Television OLED 4K HD++");
+    barang.nama = "Playstation 1";
+    barang.id = "3";
+    barang.jenis = "Electronic";
+    P = createElmBarang(barang);
     insertLastBarang(LB,P);
+    showBarang(LB);
 
 //Insert Barang to Toko
     adr_sewa S = createElmSewa(first(LB));
@@ -49,13 +60,13 @@ int main()
     insertLastSewa(LT,S,T);
 
 
-////=========Show All Data Parent=====================
+//=========Show All Data Parent=====================
 //=======Show Data Toko==============
 //    showToko(LT);
-////=======Show Data Barang===========
+//=======Show Data Barang===========
 //    showBarang(LB);
 //
-////=========Delete Parent Data=====================
+//=========Delete Parent Data=====================
 //=========Delete First List Toko======================
 //    deleteLastToko(LT,Q);
 //    showToko(LT);
@@ -63,10 +74,10 @@ int main()
 //    deleteFirstBarang(LB,P,LT);
 //    showBarang(LB);
 //    showToko(LT);
-
+//
 //=========Show Barang yang disewa oleh suatu toko=======
 //    showBarangToko(LT,"Tel-U Electronic");
 //=========Show Toko yang menyewakan suatu barang========
-    showAllSewa(LT,"Playstation 1");
+//    showAllSewa(LT,"Playstation 1");
     return 0;
 }
