@@ -78,6 +78,12 @@ int main()
         cout << "6. Tampilkan Barang yang tersedia pada suatu Toko\n";
         cout << "7. Tampilkan Toko yang menyewakan suatu barang\n";
         cout << "8. Tampilkan Toko yang paling banyak dan paling sedikit menyewakan barang\n";
+        cout << "9. Hapus Daftar Toko\n";
+        cout << "10. Hapus Daftar Barang\n";
+        cout << "11. Hapus Barang Suatu Toko\n";
+        cout << "0. Keluar Dari Program\n";
+        cout << endl;
+        cout << "Masukkan Input: ";
         cin >> pil;
         menu(pil,LT,LB);
     }
